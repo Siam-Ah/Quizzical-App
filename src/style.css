@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F7FB;
+    font-size: 2vw;
+}
+
+.start-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-bottom: -20px;
+    color: #293264;
+}
+
+.description {
+    color: #293264;
+    margin-bottom: 50px;
+}
+
+.start-button {
+    width: 10vw;
+    height: 5vh;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #4D5B9E;
+    color: #F5F7FB;
+    border: none;
+}
+
+.start-button:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.question-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-height: 100vh; /* Adjust the height as needed */
+}
+
+.question-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.line-break {
+    border: 0;
+    height: 1px;
+    background-color: #DBDEF0; /* Adjust the color as needed */
+    margin: 2vw 0;
+}
+
+.question-container input {
+    margin-right: 1vw;
+}
+
+.submit-button {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #4D5B9E;
+    color: #F5F7FB;
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.question {
+    font-weight: bold;
+    color: #293264;
+    font-size: 0.6rem
+}
+
+.answers-container {
+    display: flex;
+    gap: 1vw; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping to new lines if needed */
+}
+
+.answer-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.hidden-radio {
+    display: none; /* Hide the native radio button */
+}
+
+.answer-button {
+    display: inline-block;
+    padding: 0.5vw 2vw;
+    border-radius: 5px;
+    background-color: white;
+    color: #293264;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    user-select: none; /* Prevent text selection */
+    transition: background-color 0.3s ease, border 0.3s ease;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    border-color: #293264;
+    font-size: 0.4rem;
+    font-weight: 400;
+}
+
+.answer-button:active {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hidden-radio:checked + .answer-button {
+    background-color: #D6DBF5; /* Background color when selected */
+    border: none;
+}
+
+.hidden-radio:checked + .answer-button.correct {
+    background-color: green; /* Background color when selected */
+    color: white;
+}
+
+.hidden-radio:checked + .answer-button.incorrect {
+    background-color: red; /* Background color when selected */
+    color: white;
+}
+
+.answer-button.correct {
+    background-color: green;
+    color: white;
+}
+
+.answer-button.incorrect {
+    background-color: red;
+    color: white;
+}

@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import StartPage from "./components/StartPage";
+import QuestionPage from "./components/QuestionPage";
 
 function App() {
+  const [currentPage, setCurrentPage] = React.useState("startPage")
+
+  function startQuiz() {
+    setCurrentPage("questionPage")
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {currentPage === "startPage" && <StartPage startQuiz={startQuiz}/>}
+      {currentPage === "questionPage" && <QuestionPage />}
     </div>
   );
 }
