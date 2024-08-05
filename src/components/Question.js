@@ -1,10 +1,22 @@
 import React from "react"
 import { decode } from 'html-entities';
 
+/**
+ * Question component that displays a single quiz question with its possible answers.
+ * 
+ * @param {Object} props - The component props.
+ * @param {string} props.id - Unique identifier for the question.
+ * @param {string} props.question - The quiz question text.
+ * @param {string} props.correct - The correct answer to the question.
+ * @param {Array} props.incorrect - Array of incorrect answers.
+ * @param {boolean} props.submitted - Whether the answers have been submitted.
+ * @param {Function} props.handleAnswerChange - Function to handle answer selection change.
+ */
 export default function Question(props) {
     const [selectedAnswer, setSelectedAnswer] = React.useState("")
     const [answers, setAnswers] = React.useState([])
 
+    // Shuffle answers and set them when the component mounts
     React.useEffect(function() {
         const {correct, incorrect } = props
         if(correct === "True") {
@@ -18,12 +30,19 @@ export default function Question(props) {
         }
     }, [])
 
+    // Reset selected answer when the quiz is submitted
     React.useEffect(function() {
         if (props.submitted) {
             setSelectedAnswer("")
         }
     }, [props.submitted])
 
+    /**
+     * Shuffles an array using the Fisher-Yates algorithm.
+     * 
+     * @param {Array} array - The array to shuffle.
+     * @returns {Array} - The shuffled array.
+     */    
     function shuffleArray(array) {
         // Copy the array to avoid mutating the original one
         let shuffledArray = array.slice();
@@ -34,20 +53,23 @@ export default function Question(props) {
         return shuffledArray;
     }
 
+    /**
+     * Handles change event for answer selection.
+     * 
+     * @param {Object} event - The change event object.
+     */
     function handleChange(event) {
         const { value } = event.target
         setSelectedAnswer(value)
         props.handleAnswerChange(props.id, value)
     }
 
+    // Render answer options with appropriate classes based on selection state
     const answerSelection = answers.map((answer, index) => {
         let className = "answer-button"
         if (props.submitted) {
             if (answer === props.correct) {
                 className += " correct"
-                // if (props.userAnswer === props.correct) {
-                //     props.addCorrect()
-                // }
             } else if (answer === props.userAnswer) {
                 className += " incorrect"
             }

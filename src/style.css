@@ -12,6 +12,7 @@ html, body {
     font-size: 2vw;
 }
 
+/* Start page styles */
 .start-page {
     display: flex;
     flex-direction: column;
@@ -42,6 +43,7 @@ html, body {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
+/* Question page styles */
 .question-page {
     display: flex;
     flex-direction: column;
